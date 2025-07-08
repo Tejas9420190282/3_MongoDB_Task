@@ -1,0 +1,87 @@
+https://www.notion.so/hemanshu/Student-Performance-Tracker-API-220751be126380c59852ee1668b262f2
+
+
+# Student Performance Tracker API
+
+---
+
+✅ **Task:** Student Performance Tracker API
+
+---
+
+📝 **Description:**
+
+Develop an API that manages student records and dynamically calculates their total, average, and grade across various subjects and exams. The API will go beyond basic CRUD by aggregating performance metrics.
+
+---
+
+🧠 **Data Structure:**
+
+- **Student Schema:**
+    - `id`: Auto-generated ID
+    - `name`: String
+    - `email`: String
+    - `exams`: Array of Exam objects
+- **Exam (inside exams):**
+    - `subject`: String
+    - `score`: Number
+
+---
+
+📌 **Requirements:**
+
+### **API Endpoints**
+
+1. **POST `/students`**
+    - **Purpose:** Create a new student (with exams)
+    - **Request Body:**
+    
+    ```json
+    {
+      "name": "Ravi Kumar",
+      "email": "ravi@example.com",
+      "exams": [
+        { "subject": "Math", "score": 88 },
+        { "subject": "English", "score": 76 },
+        { "subject": "Science", "score": 93 }
+      ]
+    }
+    
+    ```
+    
+2. **GET `/students`**
+    - **Purpose:** Retrieve all students, including computed fields:
+        - Subject and Score
+        - Total Score
+        - Average Score
+        - Grade (by average)
+            - **A**: 90–100
+            - **B**: 80–89
+            - **C**: 70–79
+            - **D**: 50–69
+            - **F**: below 50
+    - **Example Response:**
+    
+    ```json
+    [
+      {
+        "id": 1,
+        "name": "Ravi Kumar",
+        "email": "ravi@example.com",
+        "totalScore": 257,
+        "averageScore": 85.67,
+        "grade": "B",
+        "exams": [
+        { "subject": "Math", "score": 88 },
+        { "subject": "English", "score": 76 },
+        { "subject": "Science", "score": 93 }
+      ]
+      }
+    ]
+    
+    ```
+    
+3. **GET `/students/:id`** 
+    1. **Purpose:** Return the details of single student.
+4. **GET `/students/topper`**
+    - **Purpose:** Return the student with the highest average score.     
